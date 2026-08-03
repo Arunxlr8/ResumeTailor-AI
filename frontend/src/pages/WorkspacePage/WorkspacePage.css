@@ -1,0 +1,133 @@
+/* ── page shell ────────────────────────────────────────────────────── */
+.workspace-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* ── two-column main ───────────────────────────────────────────────── */
+.workspace-page__main {
+  display: grid;
+  grid-template-columns: var(--left-panel-width) 1fr;
+  /* Fill the remaining viewport height below the navbar */
+  height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+}
+
+/* ── left panel ────────────────────────────────────────────────────── */
+.workspace-page__left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: var(--space-5);
+  /* Own scroll context so the button is always reachable */
+  overflow-y: auto;
+  /* Extra bottom breathing room so the button never hugs the edge */
+  padding-bottom: 28px;
+  border-right: var(--border-thin);
+  /* Full column height */
+  height: 100%;
+}
+
+/* ── right panel ───────────────────────────────────────────────────── */
+.workspace-page__right {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  overflow-y: auto;
+  height: 100%;
+  background: var(--color-bg);
+  transition: background var(--dur-slow);
+}
+
+.workspace-page__right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* ── idle placeholder ──────────────────────────────────────────────── */
+.workspace-page__idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: var(--space-10) var(--space-5);
+  gap: var(--space-4);
+  min-height: 320px;
+}
+
+.workspace-page__idle-icon {
+  opacity: 0.6;
+}
+
+.workspace-page__idle-title {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.workspace-page__idle-sub {
+  font-size: var(--text-base);
+  color: var(--color-text-faint);
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+/* ── section label ─────────────────────────────────────────────────── */
+.workspace-page__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.workspace-page__section-label {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── tablet ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .workspace-page__main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .workspace-page__left,
+  .workspace-page__right {
+    height: auto;
+    overflow: visible;
+    border-right: none;
+  }
+
+  .workspace-page__left {
+    border-bottom: var(--border-thin);
+    padding-bottom: var(--space-5);
+  }
+
+  .workspace-page__right {
+    min-height: auto;
+  }
+
+  .workspace-page__idle {
+    min-height: 160px;
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+/* ── mobile ────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .workspace-page__left,
+  .workspace-page__right {
+    padding: var(--space-3);
+  }
+}

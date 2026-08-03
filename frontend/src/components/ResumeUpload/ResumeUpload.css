@@ -1,0 +1,185 @@
+.upload-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.upload-card__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.upload-card__label svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* --- Drop zone --- */
+.upload-card__zone {
+  border: 0.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+  cursor: pointer;
+  background: var(--color-card-deep);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    background var(--dur-base) var(--ease-out);
+  user-select: none;
+}
+
+.upload-card__zone:hover:not(.upload-card__zone--disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-dim);
+}
+
+.upload-card__zone--dragging {
+  border-color: var(--color-primary) !important;
+  background: var(--color-primary-dim) !important;
+  border-style: solid !important;
+}
+
+.upload-card__zone--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.upload-card__icon {
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+  transition: color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+}
+
+.upload-card__icon--active {
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.upload-card__zone-title {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 3px;
+}
+
+.upload-card__zone-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+.upload-card__badges {
+  display: flex;
+  gap: var(--space-1);
+  justify-content: center;
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.upload-card__badge {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  background: var(--color-card);
+  color: var(--color-text-faint);
+  border: 0.5px solid var(--color-border);
+}
+
+/* --- File preview --- */
+.upload-card__preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  background: var(--color-card-deep);
+  border: 0.5px solid var(--color-primary-border);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-dim);
+}
+
+.upload-card__file-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--color-card);
+  border: 0.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.upload-card__file-ext {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 1px 3px;
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.upload-card__file-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.upload-card__file-name {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.upload-card__file-size {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.upload-card__remove-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.upload-card__remove-btn:hover {
+  background: var(--color-error-dim);
+  color: var(--color-error-text);
+  border-color: var(--color-error-border);
+}
+
+/* --- Error --- */
+.upload-card__error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-error-dim);
+  border: 0.5px solid var(--color-error-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--color-error-text);
+}

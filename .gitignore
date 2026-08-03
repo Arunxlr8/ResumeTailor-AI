@@ -1,0 +1,41 @@
+# Python & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment Secrets
+.env
+*.env
+!.env.example
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+
+# Generated Files & Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/generated/*
+!backend/generated/.gitkeep
+backend/logs/*
+!backend/logs/.gitkeep
+logs/*
+
+# OS & Temp Files
+.DS_Store
+Thumbs.db
+*.zip
+*.log
+Arun_Kumar_S_Resume_recreated.docx
+sample_resume.txt

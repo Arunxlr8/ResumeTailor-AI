@@ -1,0 +1,109 @@
+================================================================================
+ResumeTailor-AI: Technical Architecture & Interview Guide (understanding.txt)
+================================================================================
+
+1. BACKEND ARCHITECTURE & LANGGRAPH FLOW
+--------------------------------------------------------------------------------
+The backend is built with FastAPI and LangGraph (an orchestration framework for
+stateful, multi-actor AI applications).
+
+State Definition (`ResumeGraphState`):
+- `thread_id`: Unique session identifier (UUID4) for checkpointer tracking.
+- `job_description`: Target job description text.
+- `resume_text`: Parsed raw text of candidate's existing resume.
+- `llm_provider`: Selected model provider (azure / ollama / lmstudio / openai).
+- `extracted_skills`: Skills automatically parsed from resume.
+- `suggested_skills`: Recommended skills/keywords extracted from Job Description.
+- `approved_skills`: Skills confirmed/modified by human during HITL review.
+- `user_suggestions`: Custom text instructions from human reviewer.
+- `tailored_context`: Parameter dictionary constructed for resume generation.
+- `generated_resume_path`: Filepath of compiled DOCX document.
+- `ats_score_result`: Dictionary containing overall ATS score (0-100%) and metrics.
+
+Execution Nodes & State Transitions:
+1. START -> `planner_node`:
+   - Extracts candidate skills from `resume_text`.
+   - Analyzes `job_description` to identify keyword gaps and missing skills.
+   - Builds draft tailored summary and initial skills mapping.
+   - Calls LangGraph's `interrupt()` function to pause graph execution and return
+     control to the client with `pending_interrupt` payload.
+
+2. Human-In-The-Loop (HITL) Pause:
+   - Graph state is persisted using MemorySaver checkpointer keyed by `thread_id`.
+   - The user inspects skills, toggles keywords, adds custom skills, and clicks Approve.
+
+3. Client sends POST /workflow/resume -> `generator_node`:
+   - Sends `Command(resume={ approved_skills, user_suggestions, type: "approve" })`.
+   - Graph resumes execution at `generator_node`.
+   - Constructs final `tailored_context` parameter dictionary.
+   - Calls parametric `generate_resume(context, output_path)` script tool to create
+     the two-column DOCX resume matching exact formatting, borders, and margins.
+   - Runs `evaluate_ats(context, job_description)` to calculate ATS score breakdown.
+   - Graph transitions to END.
+
+
+2. INTERVIEW TALK-TRACK (How to Explain This Project in Interviews)
+--------------------------------------------------------------------------------
+Q: "How does your Resume Tailor application work?"
+A: "I built an agentic resume optimization platform powered by FastAPI, LangGraph,
+   and React. Instead of giving LLMs arbitrary code execution rights to generate Word
+   documents from scratch—which frequently leads to formatting bugs—I designed a
+   two-stage architecture:
+
+   First, an Extraction & Keyword Match Agent analyzes the candidate's resume and
+   compares it with the Job Description. It pauses via Human-in-the-Loop (HITL)
+   state interrupts so the job seeker can review, add, or remove keywords.
+
+   Second, upon approval, a Parametric Resume Generator compiles the tailored data into
+   a structured parameter dictionary and executes a python-docx rendering tool that
+   recreates an exact 2-column layout grid. Finally, an ATS Evaluation Engine scores
+   the tailored resume against the JD, yielding a match score, keyword density analysis,
+   and downloadable DOCX."
+
+Q: "Why did you use LangGraph for this instead of a simple chain?"
+A: "LangGraph provides first-class support for stateful interrupts and human-in-the-loop
+   workflows. It lets me pause graph execution, persist the state snapshot with a
+   checkpointer, allow the candidate to modify skills in the UI, and resume execution
+   seamlessly without losing context."
+
+
+3. FRONTEND ARCHITECTURE & UI DESIGN
+--------------------------------------------------------------------------------
+- Built with React, Vite, and custom CSS following the NI TestStand Enterprise Theme.
+- 3-Column Layout:
+  * Left Panel (30%): Job Description input, Resume File Upload, LLM Provider selector,
+    Generate Button.
+  * Center Panel (50%): Pipeline Stage tracker, Interactive HITL Skill Approval Box
+    (interactive skill tag chips, custom skill input, suggestions), Real-time Logs.
+  * Right Panel (22%): Session ID card, ATS Match Score Breakdown Widget (overall score
+    gauge, metric bars, matched/missing keyword chips), Artifact Download Card.
+- State Hook (`useWorkflow.js`): Manages asynchronous API calls, state transitions,
+  log event timeline, and download triggers.
+
+
+4. GIT COMMANDS USED TO INITIALIZE & PUSH REPOSITORY
+--------------------------------------------------------------------------------
+Below are the exact Git commands executed to commit clean code (without API keys)
+and push to GitHub:
+
+1. Initialize Git repository:
+   git init
+
+2. Set default branch to main:
+   git branch -M main
+
+3. Add remote repository URL:
+   git remote add origin https://github.com/Arunxlr8/ResumeTailor-AI.git
+
+4. Check status to verify .gitignore excludes .venv, node_modules, .env, and uploads:
+   git status
+
+5. Stage sanitized project files:
+   git add .
+
+6. Commit files:
+   git commit -m "Initial commit: Agentic Resume Tailor & ATS Optimizer with LangGraph, python-docx, and React UI"
+
+7. Push code to GitHub:
+   git push -u origin main --force
+================================================================================

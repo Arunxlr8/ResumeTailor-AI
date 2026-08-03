@@ -1,0 +1,325 @@
+/* ============================================================
+   NITeststandWorkspace.css
+   NI TestStand — Corporate Enterprise Theme v3
+   3-Column Layout: Left 30% / Center 50% / Right 20%
+   ============================================================ */
+
+@import './variables.css';
+
+/* ── Base ── */
+body, html {
+  margin: 0; padding: 0;
+  height: 100vh; width: 100%;
+  overflow: hidden;
+  background: var(--ni-bg);
+  color: var(--ni-text);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+.ni-root {
+  display: flex; flex-direction: column;
+  height: 100vh; width: 100%;
+  background: var(--ni-bg);
+  color: var(--ni-text);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.ni-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 28px; height: 58px;
+  background: var(--ni-primary);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  flex-shrink: 0; z-index: 10;
+  box-shadow: 0 2px 8px rgba(28,105,212,0.2);
+}
+.ni-header-logo { width: 32px; height: 32px; object-fit: contain; border-radius: 5px; }
+.ni-header-title { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.01em; }
+.ni-header-subtitle { font-size: 11px; color: rgba(255,255,255,0.65); margin-left: 6px; }
+.ni-header-spacer { flex: 1; }
+
+.ni-health-indicator {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 12px; color: rgba(255,255,255,0.85);
+  padding: 5px 12px; border-radius: 20px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+}
+.ni-health-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.4); transition: background 0.3s; flex-shrink: 0;
+}
+.ni-health-dot.healthy   { background: #4ADE80; box-shadow: 0 0 6px rgba(74,222,128,0.7); }
+.ni-health-dot.unhealthy { background: #F87171; box-shadow: 0 0 6px rgba(248,113,113,0.7); }
+.ni-health-dot.checking  { background: #FCD34D; animation: ni-pulse 1.2s infinite; }
+
+.ni-home-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px; background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22); border-radius: var(--ni-radius-sm);
+  color: #fff; font-size: 13px; cursor: pointer;
+  transition: background 0.2s; margin-left: 10px;
+}
+.ni-home-btn:hover { background: rgba(255,255,255,0.22); }
+
+/* ── 3-Column Layout ── */
+.ni-content {
+  display: flex; flex: 1; overflow: hidden; background: var(--ni-bg);
+}
+
+/* Left 30% */
+.ni-left-panel {
+  width: 30%; min-width: 280px; max-width: 380px;
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 16px 14px;
+  background: var(--ni-panel);
+  border-right: 1px solid var(--ni-border);
+  overflow-y: auto; flex-shrink: 0;
+}
+
+/* Center 50% */
+.ni-center-panel {
+  flex: 1; display: flex; flex-direction: column; gap: 12px;
+  padding: 16px 16px; overflow-y: auto; min-width: 0;
+  background: var(--ni-bg);
+  border-right: 1px solid var(--ni-border);
+}
+
+/* Right 20% */
+.ni-right-panel {
+  width: 22%; min-width: 220px; max-width: 320px;
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 16px 14px; overflow-y: auto; flex-shrink: 0;
+  background: var(--ni-panel);
+}
+
+/* ── Cards ── */
+.ni-card {
+  background: var(--ni-card);
+  border: 1px solid var(--ni-border);
+  border-radius: var(--ni-radius-md);
+  padding: 16px 18px;
+  box-shadow: var(--ni-shadow-sm);
+}
+
+.ni-card-title {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--ni-text-secondary); margin-bottom: 12px;
+}
+.ni-card-title-icon { font-size: 15px; color: var(--ni-primary); flex-shrink: 0; }
+
+/* ── Session ── */
+.ni-session-id-display {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: var(--ni-primary); background: #EBF2FF;
+  border: 1px solid #BFCFEA; border-radius: var(--ni-radius-sm);
+  padding: 8px 10px; word-break: break-all;
+  margin-bottom: 10px; min-height: 34px;
+}
+.ni-session-no-session { color: var(--ni-text-muted); font-style: italic; font-size: 12px; }
+.ni-btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* ── Buttons ── */
+.ni-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 16px; border-radius: var(--ni-radius-sm);
+  border: none; font-size: 13px; font-weight: 500;
+  cursor: pointer; white-space: nowrap;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+.ni-btn:disabled {
+  background: var(--ni-primary-disabled) !important;
+  color: #fff !important; box-shadow: none !important;
+  transform: none !important; cursor: not-allowed; opacity: 1;
+}
+
+.ni-btn-primary {
+  background: var(--ni-primary); color: #fff; font-weight: 600;
+  box-shadow: var(--ni-shadow-primary);
+}
+.ni-btn-primary:hover:not(:disabled) {
+  background: var(--ni-primary-hover);
+  box-shadow: 0 6px 16px rgba(28,105,212,0.35); transform: translateY(-1px);
+}
+
+.ni-btn-danger {
+  background: var(--ni-error-bg); color: var(--ni-error);
+  border: 1px solid var(--ni-error-border);
+}
+.ni-btn-danger:hover:not(:disabled) { background: #FECACA; transform: translateY(-1px); }
+
+.ni-btn-secondary {
+  background: #fff; color: var(--ni-text-secondary);
+  border: 1px solid var(--ni-border);
+}
+.ni-btn-secondary:hover:not(:disabled) {
+  background: #EBF2FF; border-color: var(--ni-accent); color: var(--ni-primary);
+}
+
+/* ── Textarea & Inputs ── */
+.ni-textarea {
+  width: 100%; min-height: 140px; background: #fff;
+  border: 1px solid var(--ni-border); border-radius: var(--ni-radius-sm);
+  color: var(--ni-text); font-size: 13px; font-family: inherit;
+  line-height: 1.6; padding: 10px 12px; resize: vertical; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s; box-sizing: border-box;
+}
+.ni-textarea:focus { border-color: var(--ni-accent); box-shadow: 0 0 0 3px rgba(13,120,226,0.1); }
+.ni-textarea::placeholder { color: var(--ni-text-muted); }
+
+.ni-input {
+  width: 100%; background: #fff; border: 1px solid var(--ni-border);
+  border-radius: var(--ni-radius-sm); color: var(--ni-text);
+  font-size: 13px; padding: 8px 12px; outline: none;
+  box-sizing: border-box; transition: border-color 0.2s;
+}
+.ni-input:focus { border-color: var(--ni-accent); }
+
+/* ── Mode chips ── */
+.ni-mode-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.ni-mode-chip {
+  padding: 5px 13px; border-radius: 20px;
+  border: 1px solid var(--ni-border); background: #fff;
+  color: var(--ni-text-secondary); font-size: 12px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.ni-mode-chip:hover { border-color: var(--ni-accent); color: var(--ni-accent); background: #EBF2FF; }
+.ni-mode-chip.active {
+  background: var(--ni-primary); border-color: var(--ni-primary); color: #fff;
+  font-weight: 600; box-shadow: 0 2px 6px rgba(28,105,212,0.2);
+}
+
+/* ── Skill Tag Chips ── */
+.ni-skill-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 16px; font-size: 12px; font-weight: 500;
+  border: 1px solid var(--ni-border); background: #fff; color: var(--ni-text-secondary);
+  transition: all 0.2s; cursor: pointer; user-select: none;
+}
+.ni-skill-chip.current { background: #EBF2FF; border-color: #BFCFEA; color: var(--ni-primary); }
+.ni-skill-chip.suggested { background: #FEF3C7; border-color: #FCD34D; color: #B45309; }
+.ni-skill-chip.added { background: #E6F4EC; border-color: #A3D9B5; color: #1A7F3C; }
+.ni-skill-chip.removed { opacity: 0.5; text-decoration: line-through; background: #F3F4F6; }
+.ni-skill-chip:hover { transform: translateY(-1px); }
+
+/* ── Pipeline Stages ── */
+.ni-pipeline-stages { display: flex; flex-direction: column; gap: 10px; position: relative; }
+.ni-pipeline-stages::before {
+  content: ''; position: absolute; left: 19px; top: 28px; bottom: 28px;
+  width: 2px; background: var(--ni-border); z-index: 0;
+}
+.ni-stage-card {
+  display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px;
+  border-radius: var(--ni-radius-sm); border: 1px solid var(--ni-border);
+  background: #fff; position: relative; z-index: 1;
+  transition: all 0.3s ease; box-shadow: var(--ni-shadow-sm);
+}
+.ni-stage-card.running   { border-color: #93C5FD; background: #EFF6FF; }
+.ni-stage-card.completed { border-color: var(--ni-success-border); background: var(--ni-success-bg); }
+.ni-stage-card.failed    { border-color: var(--ni-error-border); background: var(--ni-error-bg); }
+
+.ni-stage-icon {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  background: #F3F4F6; border: 2px solid var(--ni-border); transition: all 0.3s;
+  color: var(--ni-text-secondary);
+}
+.ni-stage-card.running .ni-stage-icon   { background: #DBEAFE; border-color: var(--ni-accent); color: var(--ni-accent); animation: ni-spin-ring 1.5s linear infinite; }
+.ni-stage-card.completed .ni-stage-icon { background: var(--ni-success-bg); border-color: var(--ni-success); color: var(--ni-success); }
+.ni-stage-card.failed .ni-stage-icon    { background: var(--ni-error-bg); border-color: var(--ni-error); color: var(--ni-error); }
+
+.ni-stage-info { flex: 1; min-width: 0; }
+.ni-stage-name { font-size: 13px; font-weight: 600; color: var(--ni-text); margin-bottom: 3px; }
+.ni-stage-desc { font-size: 11px; color: var(--ni-text-muted); }
+
+.ni-stage-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  flex-shrink: 0; align-self: center; border: 1px solid;
+}
+.ni-stage-badge.pending   { background: #F3F4F6; color: var(--ni-text-muted); border-color: var(--ni-border); }
+.ni-stage-badge.running   { background: #DBEAFE; color: var(--ni-accent); border-color: #93C5FD; }
+.ni-stage-badge.completed { background: var(--ni-success-bg); color: var(--ni-success); border-color: var(--ni-success-border); }
+.ni-stage-badge.failed    { background: var(--ni-error-bg); color: var(--ni-error); border-color: var(--ni-error-border); }
+
+/* ── Live Progress ── */
+.ni-progress-card { flex: 1; display: flex; flex-direction: column; }
+.ni-timeline {
+  flex: 1; display: flex; flex-direction: column; gap: 10px;
+  min-height: 180px; max-height: 300px; overflow-y: auto; padding-right: 4px;
+}
+.ni-timeline::-webkit-scrollbar { width: 5px; }
+.ni-timeline::-webkit-scrollbar-thumb { background: var(--ni-scrollbar); border-radius: 3px; }
+
+.ni-event-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  animation: ni-slide-in 0.25s ease;
+}
+.ni-event-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  margin-top: 4px; flex-shrink: 0;
+}
+.ni-event-dot.stage_started      { background: var(--ni-accent); }
+.ni-event-dot.stage_completed    { background: var(--ni-success); }
+.ni-event-dot.stage_failed       { background: var(--ni-error); }
+.ni-event-dot.pipeline_completed { background: var(--ni-primary); }
+.ni-event-dot.info               { background: var(--ni-text-muted); }
+
+.ni-event-content { flex: 1; min-width: 0; }
+.ni-event-label { font-size: 13px; color: var(--ni-text); font-weight: 500; word-break: break-word; line-height: 1.45; }
+.ni-event-ts    { font-size: 10px; color: var(--ni-text-muted); margin-top: 2px; }
+
+.ni-empty-state {
+  text-align: center; color: var(--ni-text-muted);
+  font-size: 12px; padding: 24px 0; font-style: italic;
+}
+
+/* ── ATS Score Widget ── */
+.ni-ats-card {
+  background: #fff; border: 1px solid var(--ni-border);
+  border-radius: var(--ni-radius-md); padding: 16px;
+}
+.ni-ats-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.ni-ats-score-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 58px; height: 58px; border-radius: 50%;
+  font-size: 20px; font-weight: 800; color: #fff;
+  box-shadow: var(--ni-shadow-sm);
+}
+.ni-ats-score-badge.high { background: var(--ni-success); }
+.ni-ats-score-badge.medium { background: var(--ni-warning); }
+.ni-ats-score-badge.low { background: var(--ni-error); }
+
+.ni-ats-metric-bar { margin-bottom: 10px; }
+.ni-ats-metric-info { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; font-weight: 500; }
+.ni-ats-bar-bg { height: 6px; background: #E5E7EB; border-radius: 3px; overflow: hidden; }
+.ni-ats-bar-fill { height: 100%; background: var(--ni-primary); border-radius: 3px; transition: width 0.5s ease; }
+
+/* ── Log box ── */
+.ni-log-box {
+  font-family: 'Courier New', monospace; font-size: 11px;
+  color: var(--ni-text-secondary); background: #F8FAFC;
+  border: 1px solid var(--ni-border); border-radius: var(--ni-radius-sm);
+  padding: 10px 12px; max-height: 180px; overflow-y: auto;
+  white-space: pre-wrap; word-break: break-word; line-height: 1.55;
+}
+
+/* ── Animations ── */
+@keyframes ni-pulse  { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes ni-spin-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(13,120,226,0.4); }
+  50%  { box-shadow: 0 0 0 4px rgba(13,120,226,0.1); }
+  100% { box-shadow: 0 0 0 0 rgba(13,120,226,0); }
+}
+@keyframes ni-slide-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes ni-rotate   { to { transform: rotate(360deg); } }
+
+@media (max-width: 960px) {
+  .ni-content { flex-direction: column; }
+  .ni-left-panel, .ni-center-panel, .ni-right-panel {
+    width: 100%; max-width: none; border-right: none;
+    border-bottom: 1px solid var(--ni-border); max-height: none;
+  }
+}

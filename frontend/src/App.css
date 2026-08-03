@@ -1,0 +1,13 @@
+/*
+ * App.css
+ * Top-level layout helpers that sit above page-level styles.
+ * Most design tokens live in styles/variables.css
+ * Most resets live in styles/globals.css
+ */
+
+/* Ensure the app fills the viewport */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

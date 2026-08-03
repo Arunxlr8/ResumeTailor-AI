@@ -1,0 +1,68 @@
+.jd-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.jd-card__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.jd-card__label svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.jd-card__char-count {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--dur-fast);
+}
+
+.jd-card__char-count--warn  { color: var(--color-warning-text); }
+.jd-card__char-count--limit { color: var(--color-error-text); }
+
+.jd-card__textarea {
+  width: 100%;
+  background: var(--color-card-deep);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: var(--text-base);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  padding: var(--space-3) var(--space-3);
+  resize: vertical;
+  min-height: 140px;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.jd-card__textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.jd-card__textarea::placeholder {
+  color: var(--color-text-faint);
+}
+
+.jd-card__textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.jd-card__hint {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  line-height: 1.5;
+}

@@ -1,0 +1,118 @@
+.provider-section__header {
+  margin-bottom: var(--space-3);
+}
+
+.provider-section__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.provider-section__label svg { color: var(--color-primary); }
+
+/* --- Grid --- */
+.provider-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+/* --- Card --- */
+.provider-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--color-border);
+  background: var(--color-card-deep);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    background var(--dur-base) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+  overflow: hidden;
+}
+
+.provider-card:hover:not(:disabled) {
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-dim);
+  transform: translateY(-1px);
+}
+
+.provider-card:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.provider-card--active {
+  border-color: var(--color-primary) !important;
+  background: var(--color-primary-dim) !important;
+}
+
+/* Active dot indicator */
+.provider-card__active-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+/* --- Logo --- */
+.provider-card__logo {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+.provider-card--azure .provider-card__logo {
+  background: var(--color-azure-bg);
+  color: var(--color-azure-text);
+}
+
+.provider-card--ollama .provider-card__logo {
+  background: var(--color-ollama-bg);
+  color: var(--color-ollama-text);
+}
+
+.provider-card--lm .provider-card__logo {
+  background: var(--color-lm-bg);
+  color: var(--color-lm-text);
+}
+
+/* --- Text --- */
+.provider-card__name {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.provider-card__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .provider-section__grid {
+    grid-template-columns: 1fr;
+  }
+}

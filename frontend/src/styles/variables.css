@@ -1,0 +1,54 @@
+/* ============================================================
+   DESIGN TOKENS — NI TestStand Enterprise Theme
+   ============================================================ */
+
+:root {
+  /* --- NI Enterprise Theme Colors --- */
+  --ni-primary:          #1C69D4;
+  --ni-primary-hover:    #1557B0;
+  --ni-primary-disabled: #BFCFEA;
+  --ni-accent:           #0D78E2;
+  --ni-bg:               #FFFFFF;
+  --ni-panel:            #F7F9FC;
+  --ni-card:             #F7F9FC;
+  --ni-border:           #D9E2EC;
+  --ni-success:          #1A7F3C;
+  --ni-success-bg:       #E6F4EC;
+  --ni-success-border:   #A3D9B5;
+  --ni-warning:          #B45309;
+  --ni-warning-bg:       #FEF3C7;
+  --ni-warning-border:   #FCD34D;
+  --ni-error:            #B91C1C;
+  --ni-error-bg:         #FEE2E2;
+  --ni-error-border:     #FCA5A5;
+  --ni-text:             #000000;
+  --ni-text-secondary:   #374151;
+  --ni-text-muted:       #6B7280;
+  --ni-scrollbar:        rgba(13, 120, 226, 0.68);
+  --ni-shadow-sm:        0 1px 3px rgba(0,0,0,0.07);
+  --ni-shadow-md:        0 3px 10px rgba(0,0,0,0.09);
+  --ni-shadow-primary:   0 4px 12px rgba(28,105,212,0.25);
+  --ni-radius-sm:        6px;
+  --ni-radius-md:        10px;
+  --ni-radius-lg:        14px;
+
+  /* Legacy Mapping for full component compatibility */
+  --color-primary:        var(--ni-primary);
+  --color-primary-hover:  var(--ni-primary-hover);
+  --color-primary-dim:    #EBF2FF;
+  --color-primary-border: var(--ni-border);
+  --color-accent:         var(--ni-accent);
+  --color-success:        var(--ni-success);
+  --color-success-dim:    var(--ni-success-bg);
+  --color-success-border: var(--ni-success-border);
+  --color-warning:        var(--ni-warning);
+  --color-error:          var(--ni-error);
+  --color-error-dim:      var(--ni-error-bg);
+  --color-bg:             var(--ni-bg);
+  --color-surface:        var(--ni-panel);
+  --color-card:           var(--ni-card);
+  --color-border:         var(--ni-border);
+  --color-text:           var(--ni-text);
+  --color-text-secondary: var(--ni-text-secondary);
+  --color-text-muted:     var(--ni-text-muted);
+}

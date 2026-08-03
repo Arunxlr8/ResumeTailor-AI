@@ -1,0 +1,56 @@
+.gen-btn {
+  position: relative;
+  width: 100%;
+  height: 46px;
+  /* Never let flexbox shrink the button out of view */
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  border: none;
+  background: var(--gradient-brand);
+  color: #ffffff;
+  font-size: var(--text-md);
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  letter-spacing: -0.01em;
+  transition: opacity var(--dur-fast);
+}
+
+.gen-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.gen-btn__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+/* shimmer sweep on hover */
+.gen-btn__shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.18) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  transition: background-position 0.45s ease;
+  pointer-events: none;
+}
+
+.gen-btn:hover:not(:disabled) .gen-btn__shimmer {
+  background-position: 200% 0;
+}
+
+/* spinner */
+.gen-btn__spinner {
+  animation: spin 0.9s linear infinite;
+}

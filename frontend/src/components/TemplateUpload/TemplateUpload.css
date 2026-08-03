@@ -1,0 +1,155 @@
+.tmpl-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.tmpl-card__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tmpl-card__label svg { color: var(--color-primary); }
+
+.tmpl-card__optional {
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  border: 0.5px solid var(--color-border);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+.tmpl-card__zone {
+  border: 0.5px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-4);
+  text-align: center;
+  cursor: pointer;
+  background: var(--color-card-deep);
+  transition:
+    border-color var(--dur-base) var(--ease-out),
+    background var(--dur-base) var(--ease-out);
+  user-select: none;
+}
+
+.tmpl-card__zone:hover:not(.tmpl-card__zone--disabled) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-dim);
+}
+
+.tmpl-card__zone--dragging {
+  border-color: var(--color-primary) !important;
+  background: var(--color-primary-dim) !important;
+}
+
+.tmpl-card__zone--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tmpl-card__zone-icon {
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-2);
+}
+
+.tmpl-card__zone-title {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+}
+
+.tmpl-card__zone-sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+}
+
+/* --- Preview --- */
+.tmpl-card__preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-primary-dim);
+  border: 0.5px solid var(--color-primary-border);
+  border-radius: var(--radius-md);
+}
+
+.tmpl-card__file-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--color-card);
+  border: 0.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.tmpl-card__file-ext {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--color-secondary);
+  color: #fff;
+  font-size: 7px;
+  font-weight: 700;
+  padding: 1px 3px;
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.tmpl-card__file-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tmpl-card__file-name {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.tmpl-card__file-size {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.tmpl-card__remove-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.tmpl-card__remove-btn:hover {
+  background: var(--color-error-dim);
+  color: var(--color-error-text);
+  border-color: var(--color-error-border);
+}
+
+.tmpl-card__error {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-error-text);
+}

@@ -1,0 +1,310 @@
+/* ── HitlApproval ─────────────────────────────────────────────────── */
+
+.hitl-card {
+  border-color: var(--color-warning-border);
+  background: linear-gradient(135deg,
+    rgba(245,158,11,0.04) 0%,
+    var(--color-surface) 100%);
+}
+
+/* header */
+.hitl-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.hitl-card__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.hitl-card__title svg { color: #818CF8; }
+
+.hitl-card__tag {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-warning-dim);
+  color: var(--color-warning-text);
+  border: 0.5px solid var(--color-warning-border);
+  white-space: nowrap;
+}
+
+.hitl-card__sub {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+/* content box */
+.hitl-card__content {
+  background: var(--color-card-deep);
+  border: 0.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-3);
+  margin-bottom: var(--space-3);
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+/* plan list */
+.hitl__plan-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hitl__plan-item {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  animation: fade-in 0.2s ease-out;
+}
+
+.hitl__plan-num {
+  color: var(--color-primary);
+  font-weight: 600;
+  flex-shrink: 0;
+  min-width: 18px;
+}
+
+/* code block */
+.hitl__code-wrap {
+  overflow-x: auto;
+}
+
+.hitl__code-wrap pre {
+  margin: 0;
+  padding: var(--space-2) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 11.5px !important;
+}
+
+.hitl__placeholder {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  font-style: italic;
+  padding: var(--space-2) 0;
+}
+
+/* feedback */
+.hitl-card__feedback-wrap {
+  overflow: hidden;
+  margin-bottom: var(--space-2);
+}
+
+.hitl-card__feedback {
+  width: 100%;
+  background: var(--color-card-deep);
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-3);
+  resize: vertical;
+  line-height: 1.6;
+  transition: border-color var(--dur-fast);
+}
+
+.hitl-card__feedback:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.hitl-card__feedback::placeholder { color: var(--color-text-faint); }
+
+/* actions */
+.hitl-card__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.hitl-card__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  height: 34px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    opacity    var(--dur-fast);
+  border: 0.5px solid transparent;
+}
+
+.hitl-card__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* approve */
+.hitl-card__btn--approve {
+  flex: 1;
+  background: var(--color-success-dim);
+  color: var(--color-success-text);
+  border-color: var(--color-success-border);
+}
+.hitl-card__btn--approve:hover:not(:disabled) {
+  background: rgba(34,197,94,0.22);
+}
+
+/* regenerate */
+.hitl-card__btn--regen {
+  background: var(--color-card-deep);
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+.hitl-card__btn--regen:hover:not(:disabled) {
+  background: var(--color-card);
+  color: var(--color-text);
+}
+
+/* feedback toggle */
+.hitl-card__btn--feedback {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+.hitl-card__btn--feedback:hover:not(:disabled) {
+  background: var(--color-card);
+  color: var(--color-text);
+}
+.hitl-card__btn--feedback-active {
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-dim);
+  color: #818CF8;
+}
+
+/* spinner */
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+/* ── Structured plan sections (object output) ────────────────────────────── */
+
+.hitl__plan-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Individual section card */
+.hitl__section {
+  border: 0.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  animation: fade-in 0.2s ease-out;
+}
+
+.hitl__section-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px var(--space-3);
+  background: var(--color-card);
+  border-bottom: 0.5px solid var(--color-border-subtle);
+}
+
+.hitl__section-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.hitl__section-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hitl__section-body {
+  padding: var(--space-2) var(--space-3);
+}
+
+/* Plain text value */
+.hitl__plan-text {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Empty / null placeholder inside a section */
+.hitl__plan-empty {
+  font-size: var(--text-sm);
+  color: var(--color-text-faint);
+  font-style: italic;
+}
+
+/* Array list inside a section */
+.hitl__plan-array {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hitl__plan-array-item {
+  display: flex;
+  gap: var(--space-2);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  align-items: baseline;
+}
+
+.hitl__plan-bullet {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Nested object inside a section */
+.hitl__plan-nested {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hitl__plan-nested-row {
+  display: flex;
+  gap: var(--space-2);
+  align-items: baseline;
+  font-size: var(--text-base);
+  line-height: 1.55;
+}
+
+.hitl__plan-nested-key {
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  text-transform: capitalize;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+/* Raw JSON fallback */
+.hitl__plan-raw {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
